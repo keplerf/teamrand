@@ -1,0 +1,25 @@
+<form action="/team" method="post" class="form-horizontal">
+  <div class="form-group">
+    <label for="names">Names</label>
+    <textarea name="names" id="names" class="form-control"><%= @names %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="names">Method</label>
+    <input  type="radio" name="method" value="team_count" checked="checked" > Team Count
+    <input type="radio" name="method" value="per_team"> Number Per Team
+  </div>
+  <div class="form-group">
+    <label>Number</label>
+    <input type="text" name="team" class="form-control" value="2">
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </div>
+</form>
+<% if @teams %>
+  <% counter =  1 %>
+  <% @teams.each do |name| %>
+    <h2> Team #<%= counter %> - <%= name.join(", ") %> </h2>
+    <% counter += 1 %>
+  <% end  %>
+<% end %>
